@@ -37,4 +37,9 @@ grunt
 http://localhost:9000/
 ```
 
+## Todo
+- Refactor all the app.js code.
+- Separate the html views.
+- Create custom directives for functionality.
+
 For a quick review you can check the [live demo](https://codepen.io/jorgeruvalcaba/full/qXdbbv/).
