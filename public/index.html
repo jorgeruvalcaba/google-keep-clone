@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="cardsApp">
+  <head>
+    <script src="js/lib/angular.min.js"></script>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/angular-material.min.css">
+    <link rel="stylesheet" href="css/docs.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Google Keep Clone</title>
+  </head>
+  <body>
+    <div ng-controller="cardsController" ng-cloak="" class="carddemoBasicUsage">
+      <md-content layout-padding>
+        <div>
+          <form name="userForm">
+            <div layout-gt-xs="row">
+              <md-input-container class="sm-block" flex-gt-sm>
+                <label>Search</label>
+                <input ng-model="query[queryBy]">
+              </md-input-container>
+            </div>
+          </form>
+        </div>
+      </md-content>
+      <md-content class="md-padding" layout-xs="column" layout="column">
+        <div flex-xs="" flex-gt-xs="50" layout="row">
+          <md-card ng-repeat="card in cards | filter:query">
+            <div class='wrap' ng-style="myStyle">
+              <div class='colours'>
+                <div ng-style='{background:color.hex}' ng-repeat="color in colors" ng-click="colour(color)"></div>
+              </div>
+              <md-card-title>
+                <md-card-title-text>
+                  <span ng-hide="card.editing" class="md-headline">{{card.title}}</span>
+                  <md-input-container ng-show="card.editing" class="md-block">
+                    <label>Title</label>
+                    <input ng-model="card.title">
+                  </md-input-container>
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-content>
+                <p ng-hide="card.editing">{{card.description}}</p>
+                <md-input-container ng-show="card.editing" class="md-block">
+                  <label>Content</label>
+                  <input ng-model="card.description">
+                </md-input-container>
+              </md-card-content>
+              <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-show="!card.editing" class="md-raised md-primary" href="#" ng-click="editCard(card)">Edit</md-button>
+                <md-button ng-show="card.editing" class="md-raised md-primary" href="#" ng-click="doneEditing(card)">Save</md-button>
+                <md-button ng-show="card.editing" class="md-raised md-primary" href="#" ng-click="cancel(card)">Cancel</md-button>
+                <md-button ng-show="!card.editing" class="md-raised md-warn" href="#" ng-click="del(card.id)">Delete</md-button>
+              </md-card-actions>
+            </div>
+          </md-card>
+        </div>
+      </md-content>
+      <md-content layout-padding>
+        <section ng-show="buttonOn" layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+          <md-button ng-click="toggle()" class="md-fab">
+            <md-icon aria-label="Add new" class="material-icons">add</md-icon>
+          </md-button>
+        </section>
+        <div ng-show="!buttonOn">
+          <form name="cardForm" method="post" ng-submit="edit(cards)">
+            <div layout-gt-sm="row">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Title</label>
+                <input ng-model="title">
+              </md-input-container>
+            </div>
+            <md-input-container class="md-block">
+              <label>Text</label>
+              <textarea ng-model="description" md-maxlength="140" rows="3" md-select-on-focus></textarea>
+            </md-input-container>
+          </form>
+          <section layout="row" layout-align="center center" layout-wrap>
+            <md-button class="md-raised md-primary" ng-click="add()">Add</md-button>
+          </section>
+        </div>
+      </md-content>
+    </div>
+    <script src="js/lib/angular-animate.min.js" charset="utf-8"></script>
+    <script src="js/lib/angular-route.min.js"></script>
+    <script src="js/lib/angular-aria.min.js"></script>
+    <script src="js/lib/angular-messages.min.js"></script>
+    <script src="js/lib/svg-assets-cache.js"></script>
+    <script src="js/lib/angular-material.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

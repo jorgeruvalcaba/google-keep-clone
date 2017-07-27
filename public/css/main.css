@@ -1,0 +1,56 @@
+.carddemoBasicUsage .card-media {
+  background-color: #999999; }
+
+.actionBar{
+  width:100%;
+  top:0;
+  background:#ffffff;
+  height:3em;
+}
+.actionBar input[type=text]{
+  width:80%;
+  border:0;
+  font-size:2em;
+  margin:0;
+  float:left;
+  text-indent:0.5em;
+
+}
+
+.actionBar input[type=submit]{
+  font-size:2em;
+  margin:0;
+  float:right;
+  width:19%;
+  color:#333 !important;
+}
+
+label:hover{
+  text-decoration: underline;
+  cursor:pointer;
+}
+
+.colours{
+  position:absolute;
+  top:3em;
+  width:2em;
+  left:-1.6em;
+  height:7em;
+  display:flex;
+  flex-direction:column;
+  transition: all 0.2s ease-in-out;
+}
+.colours div{
+  transition: all 0.5s ease;
+  flex:1;
+}
+.colours div:hover{
+  cursor:pointer;
+}
+
+a{
+  color:#731021;
+}
+.wrap:hover .colours{
+  left:0px;
+}
